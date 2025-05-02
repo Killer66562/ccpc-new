@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import { router } from '@inertiajs/vue3';
-import { route } from 'ziggy-js';
-import BaseLayout from './BaseLayout.vue'
-
-const onBtnClicked = (r: string) => {
-    router.visit(route(r));
-}
+import BaseLayout from './BaseLayout.vue';
+import { toNamedRoute } from '../lib/utils';
 </script>
 
 <template>
@@ -18,42 +13,42 @@ const onBtnClicked = (r: string) => {
                 <div class="row">
                     <div class="col-3 p-2">
                         <div class="d-grid">
-                            <a href="javascript:void(0)" @click="onBtnClicked('ccpc.announcements')">競賽公告</a>
+                            <a href="javascript:void(0)" @click="toNamedRoute('announcements.index')">競賽公告</a>
                         </div>
                     </div>
                     <div class="col-3 p-2">
                         <div class="d-grid">
-                            <a href="javascript:void(0)" @click="onBtnClicked('ccpc.competitionInfo')">競賽資訊</a>
+                            <a href="javascript:void(0)" @click="toNamedRoute('competitionInfo')">競賽資訊</a>
                         </div>
                     </div>
                     <div class="col-3 p-2">
                         <div class="d-grid">
-                            <a href="javascript:void(0)" @click="onBtnClicked('ccpc.registrationResults')">報名結果</a>
+                            <a href="javascript:void(0)" @click="toNamedRoute('registrations.index')">報名結果</a>
                         </div>
                     </div>
                     <div class="col-3 p-2">
                         <div class="d-grid">
-                            <a href="javascript:void(0)" @click="onBtnClicked('ccpc.modifyRegistration')">修改報名</a>
+                            <a href="javascript:void(0)" @click="toNamedRoute('user.registration')">修改報名</a>
                         </div>
                     </div>
                     <div class="col-3 p-2">
                         <div class="d-grid">
-                            <a href="javascript:void(0)" @click="onBtnClicked('ccpc.flow')">活動流程</a>
+                            <a href="javascript:void(0)" @click="toNamedRoute('ccpc.flow')">活動流程</a>
                         </div>
                     </div>
                     <div class="col-3 p-2">
                         <div class="d-grid">
-                            <a href="javascript:void(0)" @click="onBtnClicked('ccpc.comments')">問題留言</a>
+                            <a href="javascript:void(0)" @click="toNamedRoute('ccpc.comments')">問題留言</a>
                         </div>
                     </div>
                     <div class="col-3 p-2">
                         <div class="d-grid">
-                            <a href="javascript:void(0)" @click="onBtnClicked('ccpc.competitionResults')">競賽結果</a>
+                            <a href="javascript:void(0)" @click="toNamedRoute('ccpc.competitionResults')">競賽結果</a>
                         </div>
                     </div>
                     <div class="col-3 p-2">
                         <div class="d-grid">
-                            <a href="javascript:void(0)" @click="onBtnClicked('ccpc.background')">活動花絮</a>
+                            <a href="javascript:void(0)" @click="toNamedRoute('ccpc.background')">活動花絮</a>
                         </div>
                     </div>
                 </div>
@@ -66,18 +61,18 @@ const onBtnClicked = (r: string) => {
             </div>
             <div class="col-12 col-lg-4">
                 <div class="d-grid pb-4">
-                    <button type="button" class="btn btn-primary fw-bold" @click="onBtnClicked('ccpc.modifyRegistration')">立即報名</button>
+                    <button type="button" class="btn btn-primary fw-bold" @click="toNamedRoute('registrations.create')">立即報名</button>
                 </div>
                 <div class="fw-bold ds-2 pb-4">指導單位</div>
                 <a href="https://www.ncue.edu.tw/">
                     <div class="fw-bold ds-2 pb-4">
-                        <img class="img-fluid" src="../../../../public/ncue.png" style="min-width: 100%;">
+                        <img class="img-fluid" src="../../assets/ncue.png" style="min-width: 100%;">
                     </div>
                 </a>
                 <div class="fw-bold ds-2">主辦單位</div>
                 <a href="https://www.csie.ncue.edu.tw/csie/">
                     <div class="fw-bold ds-2">
-                        <img class="img-fluid" src="../../../../public/ncue-csie.png" style="min-width: 100%;">
+                        <img class="img-fluid" src="../../assets/ncue-csie.png" style="min-width: 100%;">
                     </div>
                 </a>
             </div>
