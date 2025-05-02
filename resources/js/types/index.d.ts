@@ -1,5 +1,5 @@
 export interface PageProps {
-    [key: string]
+    [key: string]: unknown
 }
 
 export interface Base {
