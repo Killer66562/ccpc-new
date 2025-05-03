@@ -88,7 +88,8 @@ const onDelete = (id: number) => {
 </script>
 
 <template>
-    <h2 class="fw-bold">報名時間管理</h2>
+    <h2 class="fw-bold">報名開放期間</h2>
+    <p class="text-danger">請務必注意報名開放期間，逾時將無法報名。</p>
     <template v-if="page.props.showForm">
         <hr>
         <form @submit.prevent="onSubmit" @reset.prevent="onReset">
@@ -116,14 +117,14 @@ const onDelete = (id: number) => {
                 <tr>
                     <th>起始時間</th>
                     <th>結束時間</th>
-                    <th>操作</th>
+                    <th v-if="page.props.showForm">操作</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="period in page.props.periods" :key="period.id">
                     <td>{{ new Date(period.starts_at).toLocaleString('zh-tw', { timeZone: 'Asia/Taipei' }) }}</td>
                     <td>{{ new Date(period.ends_at).toLocaleString('zh-tw', { timeZone: 'Asia/Taipei' }) }}</td>
-                    <td>
+                    <td v-if="page.props.showForm">
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary" @click="onEdit(period)">修改</button>
                             <button type="button" class="btn btn-danger" @click="onDelete(period.id)">刪除</button>

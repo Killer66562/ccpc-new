@@ -11,7 +11,7 @@ class StoreResultRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,8 @@ class StoreResultRequest extends FormRequest
     {
         return [
             //
+            'rank' => ['required', 'integer', 'numeric'], 
+            'registration_id' => ['required', 'exists:registrations,id']
         ];
     }
 }

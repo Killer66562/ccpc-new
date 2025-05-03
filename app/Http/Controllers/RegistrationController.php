@@ -26,9 +26,10 @@ class RegistrationController extends Controller
             $registrations = [];
         }
         finally {
+            $showForm = request()->user()?->hasRole('admin') ? true : false;
             return Inertia::render('Registrations', [
                 'registrations' => $registrations, 
-                'showForm' => false
+                'showForm' => $showForm
             ]);
         }
     }
@@ -77,7 +78,8 @@ class RegistrationController extends Controller
     public function update(UpdateRegistrationRequest $request, Registration $registration)
     {
         //
-        if (!request()->user()?->can('update', $registration)) {
+        $valid = request()->user()?->can('update', $registration) ? true : false;
+        if (!$valid) {
             return redirect()->route('home')->withErrors([
                 'message' => 'You have no permission'
             ]);
@@ -93,7 +95,8 @@ class RegistrationController extends Controller
     public function destroy(Registration $registration)
     {
         //
-        if (!request()->user()?->can('delete', $registration)) {
+        $valid = request()->user()?->can('delete', $registration);
+        if (!$valid) {
             return redirect()->route('home')->withErrors([
                 'message' => 'You have no permission'
             ]);

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreResultRequest;
 use App\Http\Requests\UpdateResultRequest;
+use App\Models\Registration;
 use App\Models\Result;
 use Carbon\Carbon;
 use DateTimeZone;
+use Illuminate\Database\Query\Builder;
 use Inertia\Inertia;
 
 class ResultController extends Controller
@@ -22,17 +24,25 @@ class ResultController extends Controller
         $year = request()->query('year', null);
         if ($year !== null) {
             $year = (string)$year;
-            $query = $query->where('person.year', '=', $year);
+            $query = $query->whereHas('person', function ($builder) use ($year) {
+                $builder->where('year', '=', $year);
+            });
         }
         else {
             $year = (string)Carbon::now(new DateTimeZone('+0800'))->year;
-            $query = $query->where('person.year', '=', $year);
+            $query = $query->whereHas('person', function ($builder) use ($year) {
+                $builder->where('year', '=', $year);
+            });
         }
         
         $results = $query->orderBy('rank')->get();
+        $people = Registration::query()->where('year', '=', $year)->get();
+        $showForm = request()->user()?->hasRole('admin') ? true : false;
         return Inertia::render('Results', [
             'results' => $results, 
-            'year' => $year
+            'year' => $year, 
+            'people' => $people, 
+            'showForm' => $showForm
         ]);
     }
 
@@ -50,6 +60,9 @@ class ResultController extends Controller
     public function store(StoreResultRequest $request)
     {
         //
+        $data = $request->validated();
+        Result::create($data);
+        return redirect()->back();
     }
 
     /**

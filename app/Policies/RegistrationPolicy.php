@@ -13,7 +13,7 @@ class RegistrationPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class RegistrationPolicy
      */
     public function view(User $user, Registration $registration): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class RegistrationPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class RegistrationPolicy
      */
     public function update(User $user, Registration $registration): bool
     {
-        return false;
+        return $user->id === $registration->user_id || $user->hasRole('admin');
     }
 
     /**
@@ -45,7 +45,7 @@ class RegistrationPolicy
      */
     public function delete(User $user, Registration $registration): bool
     {
-        return false;
+        return $user->id === $registration->user_id || $user->hasRole('admin');
     }
 
     /**
@@ -53,7 +53,7 @@ class RegistrationPolicy
      */
     public function restore(User $user, Registration $registration): bool
     {
-        return false;
+        return $user->hasRole('admin');
     }
 
     /**
@@ -61,6 +61,6 @@ class RegistrationPolicy
      */
     public function forceDelete(User $user, Registration $registration): bool
     {
-        return false;
+        return $user->hasRole('admin');
     }
 }

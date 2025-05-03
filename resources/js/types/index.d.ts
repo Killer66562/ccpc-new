@@ -97,5 +97,6 @@ export interface PeriodsPageProps extends SharedData {
 export interface ResultsPageProps extends SharedData {
     results: Result[], 
     year?: string, 
-    showForm?: boolean
+    showForm?: boolean, 
+    people: Registration[]
 }

@@ -28,7 +28,7 @@ import { toNamedRoute } from '../lib/utils';
                     </div>
                     <div class="col-3 p-2">
                         <div class="d-grid">
-                            <a href="javascript:void(0)" @click="toNamedRoute('dashboard')">修改報名</a>
+                            <a href="javascript:void(0)" @click="toNamedRoute('periods.index')">開放期間</a>
                         </div>
                     </div>
                     <div class="col-3 p-2">
@@ -43,12 +43,12 @@ import { toNamedRoute } from '../lib/utils';
                     </div>
                     <div class="col-3 p-2">
                         <div class="d-grid">
-                            <a href="javascript:void(0)" @click="toNamedRoute('ccpc.competitionResults')">競賽結果</a>
+                            <a href="javascript:void(0)" @click="toNamedRoute('results.index')">競賽結果</a>
                         </div>
                     </div>
                     <div class="col-3 p-2">
                         <div class="d-grid">
-                            <a href="javascript:void(0)" @click="toNamedRoute('ccpc.background')">活動花絮</a>
+                            <a href="javascript:void(0)" @click="toNamedRoute('background')">活動花絮</a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ import { toNamedRoute } from '../lib/utils';
             </div>
             <div class="col-12 col-lg-4">
                 <div class="d-grid pb-4">
-                    <button type="button" class="btn btn-primary fw-bold" @click="toNamedRoute('dashboard')">立即報名</button>
+                    <button type="button" class="btn btn-primary fw-bold" @click="toNamedRoute('dashboard')">報名/修改報名</button>
                 </div>
                 <div class="fw-bold ds-2 pb-4">指導單位</div>
                 <a href="https://www.ncue.edu.tw/">

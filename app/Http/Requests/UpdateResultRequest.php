@@ -11,7 +11,7 @@ class UpdateResultRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,8 @@ class UpdateResultRequest extends FormRequest
     {
         return [
             //
+            'rank' => ['required', 'integer', 'numeric'], 
+            'registration_id' => ['required', 'exists:registrations,id']
         ];
     }
 }

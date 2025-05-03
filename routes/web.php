@@ -23,6 +23,10 @@ Route::get('/flow', function () {
     return Inertia::render('Flow');
 })->name('flow');
 
+Route::get('/background', function () {
+    return Inertia::render('Background');
+})->name('background');
+
 Route::get('/test', function () {
     return Inertia::render('Test', ['message' => "Hi"]);
 })->name('test');
@@ -32,3 +36,4 @@ require __DIR__.'/announcements.php';
 require __DIR__.'/registrations.php';
 require __DIR__.'/comments.php';
 require __DIR__.'/periods.php';
+require __DIR__.'/results.php';
