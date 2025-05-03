@@ -15,6 +15,10 @@ Route::get('/competition-info', function () {
     return Inertia::render('CompetitionInfo');
 })->name('competitionInfo');
 
+Route::get('/transportation-info', function () {
+    return Inertia::render('TransportationInfo');
+})->name('transportationInfo');
+
 Route::get('/flow', function () {
     return Inertia::render('Flow');
 })->name('flow');

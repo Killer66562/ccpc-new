@@ -13,7 +13,7 @@ class PeriodPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->hasRole('admin');
     }
 
     /**
@@ -21,7 +21,7 @@ class PeriodPolicy
      */
     public function view(User $user, Period $period): bool
     {
-        return false;
+        return $user->hasRole('admin');
     }
 
     /**
@@ -29,7 +29,7 @@ class PeriodPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->hasRole('admin');
     }
 
     /**
@@ -37,7 +37,7 @@ class PeriodPolicy
      */
     public function update(User $user, Period $period): bool
     {
-        return false;
+        return $user->hasRole('admin');
     }
 
     /**
@@ -45,7 +45,7 @@ class PeriodPolicy
      */
     public function delete(User $user, Period $period): bool
     {
-        return false;
+        return $user->hasRole('admin');
     }
 
     /**
@@ -53,7 +53,7 @@ class PeriodPolicy
      */
     public function restore(User $user, Period $period): bool
     {
-        return false;
+        return $user->hasRole('admin');
     }
 
     /**
@@ -61,6 +61,6 @@ class PeriodPolicy
      */
     public function forceDelete(User $user, Period $period): bool
     {
-        return false;
+        return $user->hasRole('admin');
     }
 }

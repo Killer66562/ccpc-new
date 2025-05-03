@@ -34,12 +34,6 @@ const submit = () => {
 const reset = () => {
     f.reset();
 }
-
-const onBtnClicked = (comment: Comment) => {
-
-}
-
-console.log(page.props.comments)
 </script>
 
 <template>
@@ -61,7 +55,7 @@ console.log(page.props.comments)
         </form>
     </template>
     <template v-if="page.props.comments?.length > 0">
-        <CommentComp v-for="comment in page.props.comments" :key="comment.id" :comment="comment" @btn-clicked="onBtnClicked(comment)" />
+        <CommentComp v-for="comment in page.props.comments" :key="comment.id" :comment="comment" :show-button="page.props.showForm"/>
     </template>
     <h3 class="text-center" v-else>目前沒有任何留言喔</h3>
 </template>

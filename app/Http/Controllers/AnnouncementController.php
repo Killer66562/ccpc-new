@@ -15,10 +15,14 @@ class AnnouncementController extends Controller
     public function index()
     {
         //
+        if (request()->user()?->can('create', Announcement::class)) {
+            return redirect()->route('home');
+        }
         $announcements = Announcement::all();
+        $showForm = request()->user()?->hasRole('admin') ? true : false;
         return Inertia::render('Announcements', [
             'announcements' => $announcements, 
-            'showForm' => false
+            'showForm' => $showForm
         ]);
     }
 
@@ -36,6 +40,9 @@ class AnnouncementController extends Controller
     public function store(StoreAnnouncementRequest $request)
     {
         //
+        if (!$request->user()?->can('create', Announcement::class)) {
+            return redirect()->route('home');
+        }
         $data = $request->validated();
         Announcement::create($data);
         return redirect()->back();
@@ -63,6 +70,9 @@ class AnnouncementController extends Controller
     public function update(UpdateAnnouncementRequest $request, Announcement $announcement)
     {
         //
+        if (!$request->user()?->can('create', Announcement::class)) {
+            return redirect()->route('home');
+        }
         $data = $request->validated();
         $announcement->update($data);
         return redirect()->back();
@@ -74,6 +84,10 @@ class AnnouncementController extends Controller
     public function destroy(Announcement $announcement)
     {
         //
+        if (!request()->user()?->can('create', Announcement::class)) {
+            return redirect()->route('home');
+        }
+        $valid = request()->user()?->can('announcements.delete') ? true : false;
         $announcement->delete();
         return redirect()->back();
     }

@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import AppHeader from '../components/AppHeader.vue';
+import { toastErrors } from '../lib/utils';
+import { usePage } from '@inertiajs/vue3';
+
+const page = usePage();
+toastErrors(page.props.errors);
 </script>
 
 <template>

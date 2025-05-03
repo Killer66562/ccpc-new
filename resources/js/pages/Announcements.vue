@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { Announcement, AnnouncementsPageProps } from '../types';
 import { useForm, usePage } from '@inertiajs/vue3';
 import { route } from 'ziggy-js';
+import { toastErrors } from '../lib/utils';
 
 const announcement = ref<Announcement>();
 const page = usePage<AnnouncementsPageProps>();
@@ -56,8 +57,8 @@ const submit = () => {
                 f.reset();
                 alert("更新成功");
             }, 
-            onError: () => {
-                alert("更新失敗");
+            onError: (errors) => {
+                toastErrors(errors);
             }
         });
     }
@@ -71,8 +72,8 @@ const submit = () => {
                 f.reset();
                 alert("更新成功");
             }, 
-            onError: () => {
-                alert("更新失敗");
+            onError: (errors) => {
+                toastErrors(errors);
             }
         });
     }
@@ -93,6 +94,10 @@ const formatDate = (dateString: Date) => {
     const date = d.getDate();
     return `${year}/${month}/${date}`;
 }
+
+const valid = computed(() => {
+    return f.content.length > 0 && !f.processing;
+})
 </script>
 
 <template>
@@ -107,11 +112,11 @@ const formatDate = (dateString: Date) => {
                 <textarea class="form-control" rows="5" v-model="f.content"></textarea>
             </div>
             <div class="btn-group">
-                <button type="submit" v-if="announcement" class="btn btn-success">更新公告</button>
-                <button type="submit" v-else class="btn btn-success">新增公告</button>
+                <button type="submit" v-if="announcement" class="btn btn-success" :disabled="!valid">更新公告</button>
+                <button type="submit" v-else class="btn btn-success" :disabled="!valid">新增公告</button>
                 <button type="button" v-if="announcement" class="btn btn-secondary" @click="cancel">取消編輯</button>
                 <button type="reset" class="btn btn-warning">重新填寫</button>
-                <button type="button" class="btn btn-danger" @click="del">刪除公告</button>
+                <button type="button" class="btn btn-danger" @click="del" :disabled="f.processing">刪除公告</button>
             </div>
         </form>
     </template>
@@ -128,7 +133,7 @@ const formatDate = (dateString: Date) => {
             <tbody>
                 <tr v-for="anno in page.props.announcements" :key="anno.id">
                     <td>{{ formatDate(anno.created_at) }}</td>
-                    <td>{{ anno.content }}</td>
+                    <td class="pre-line">{{ anno.content }}</td>
                     <td v-if="page.props.showForm">
                         <button type="button" class="btn btn-primary" @click="edit(anno)">編輯</button>
                     </td>
@@ -137,3 +142,9 @@ const formatDate = (dateString: Date) => {
         </table>
     </div>
 </template>
+
+<style scoped>
+.pre-line {
+    white-space: pre-line;
+}
+</style>

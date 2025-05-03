@@ -61,6 +61,12 @@ export interface Period extends Base {
     ends_at: Date
 }
 
+export interface Result extends Base {
+    rank: number, 
+    registration_id: number, 
+    person: Registration
+}
+
 export interface AnnouncementsPageProps extends SharedData {
     announcements: Announcement[], 
     showForm?: boolean
@@ -72,14 +78,22 @@ export interface RegistrationsPageProps extends SharedData {
 }
 
 export interface DashboardPageProps extends SharedData {
+    inPeriod: boolean, 
     registration: Registration | null, 
     comments: Comment[]
 }
 
 export interface CommentsPageProps extends SharedData {
-    comments: Comment[]
+    comments: Comment[], 
+    showForm?: boolean
 }
 
 export interface PeriodsPageProps extends SharedData {
     periods: Period[]
+}
+
+export interface ResultsPageProps extends SharedData {
+    results: Result[], 
+    year?: string, 
+    showForm?: boolean
 }

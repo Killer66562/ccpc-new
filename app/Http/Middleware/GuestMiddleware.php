@@ -16,7 +16,9 @@ class GuestMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if ($request->user()) {
-            return redirect()->route('home');
+            return redirect()->route('home')->withErrors([
+                'message' => 'You have already logged in'
+            ]);
         }
         return $next($request);
     }

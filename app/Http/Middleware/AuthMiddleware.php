@@ -16,7 +16,9 @@ class AuthMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!$request->user()) {
-            return redirect()->route('login');
+            return redirect()->route('login')->withErrors([
+                'message' => 'Please login first'
+            ]);
         }
         return $next($request);
     }

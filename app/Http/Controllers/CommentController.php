@@ -16,9 +16,10 @@ class CommentController extends Controller
     {
         //
         $comments = Comment::query()->orderByDesc('created_at')->get();
+        $showForm = request()->user()->hasRole('admin') ? true : false;
         return Inertia::render('Comments', [
             'comments' => $comments, 
-            'showForm' => true
+            'showForm' => $showForm
         ]);
     }
 
@@ -63,6 +64,12 @@ class CommentController extends Controller
     public function update(UpdateCommentRequest $request, Comment $comment)
     {
         //
+        if (!$request->user()?->can('comments.update', $comment)) {
+            return redirect()->route('home');
+        }
+        $data = $request->validated();
+        $comment->update($data);
+        return redirect()->back();
     }
 
     /**
@@ -71,5 +78,10 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         //
+        if (request()->user()?->can('comments.delete', $comment)) {
+            return redirect()->route('home');
+        }
+        $comment->delete();
+        return redirect()->back();
     }
 }
