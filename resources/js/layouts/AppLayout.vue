@@ -28,17 +28,17 @@ import { toNamedRoute } from '../lib/utils';
                     </div>
                     <div class="col-3 p-2">
                         <div class="d-grid">
-                            <a href="javascript:void(0)" @click="toNamedRoute('user.registration')">修改報名</a>
+                            <a href="javascript:void(0)" @click="toNamedRoute('dashboard')">修改報名</a>
                         </div>
                     </div>
                     <div class="col-3 p-2">
                         <div class="d-grid">
-                            <a href="javascript:void(0)" @click="toNamedRoute('ccpc.flow')">活動流程</a>
+                            <a href="javascript:void(0)" @click="toNamedRoute('flow')">活動流程</a>
                         </div>
                     </div>
                     <div class="col-3 p-2">
                         <div class="d-grid">
-                            <a href="javascript:void(0)" @click="toNamedRoute('ccpc.comments')">問題留言</a>
+                            <a href="javascript:void(0)" @click="toNamedRoute('comments.index')">問題留言</a>
                         </div>
                     </div>
                     <div class="col-3 p-2">
@@ -61,7 +61,7 @@ import { toNamedRoute } from '../lib/utils';
             </div>
             <div class="col-12 col-lg-4">
                 <div class="d-grid pb-4">
-                    <button type="button" class="btn btn-primary fw-bold" @click="toNamedRoute('registrations.create')">立即報名</button>
+                    <button type="button" class="btn btn-primary fw-bold" @click="toNamedRoute('dashboard')">立即報名</button>
                 </div>
                 <div class="fw-bold ds-2 pb-4">指導單位</div>
                 <a href="https://www.ncue.edu.tw/">

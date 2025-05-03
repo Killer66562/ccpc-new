@@ -1,8 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnnouncementController;
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Route;
 
 Route::prefix("/announcements")->group(function () {
     Route::get('/', [AnnouncementController::class, 'index'])->name('announcements.index');

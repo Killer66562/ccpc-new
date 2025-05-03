@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Carbon\Carbon;
+use DateTimeZone;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -45,5 +47,22 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function registrations() {
+        return $this->hasMany(Registration::class, 'user_id', 'id');
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class, 'user_id', 'id');
+    }
+
+    public function getCommentsAttribute() {
+        return $this->comments()->get();
+    }
+
+    public function getRegistrationAttribute() {
+        $year = Carbon::now(new DateTimeZone('+0800'))->year;
+        return $this->registrations()->where('year', '=', $year)->first();
     }
 }

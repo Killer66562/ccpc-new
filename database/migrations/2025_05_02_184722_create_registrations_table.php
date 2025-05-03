@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
+            $table->integer('year');
+            $table->string('name');
+            $table->string('sid');
+            $table->string('university');
+            $table->string('department');
+            $table->string('tel');
+            $table->string('email');
+            $table->string('account');
+            $table->boolean('is_paid')->default(false);
+            $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

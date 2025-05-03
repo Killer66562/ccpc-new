@@ -20,13 +20,16 @@ class RegistrationController extends Controller
         //
         try {
             $year = Carbon::now(new DateTimeZone('+0800'))->year;
-            $registrations = Registration::query()->where('year', '=', $year);
+            $registrations = Registration::query()->where('year', '=', $year)->get();
         }
         catch (Exception $exception) {
             $registrations = [];
         }
         finally {
-            return Inertia::render('Registrations', ['registrations' => $registrations]);
+            return Inertia::render('Registrations', [
+                'registrations' => $registrations, 
+                'showForm' => false
+            ]);
         }
     }
 
@@ -45,6 +48,10 @@ class RegistrationController extends Controller
     {
         //
         $data = $request->validated();
+
+        $year = Carbon::now(new DateTimeZone('+0800'))->year;
+        $data = array_merge($data, ['year' => $year]);
+
         Registration::create($data);
         return redirect()->back();
     }
@@ -71,6 +78,10 @@ class RegistrationController extends Controller
     public function update(UpdateRegistrationRequest $request, Registration $registration)
     {
         //
+        $data = $request->validated();
+
+        $registration->update($data);
+        return redirect()->back();
     }
 
     /**
@@ -79,5 +90,7 @@ class RegistrationController extends Controller
     public function destroy(Registration $registration)
     {
         //
+        $registration->delete();
+        return redirect()->back();
     }
 }

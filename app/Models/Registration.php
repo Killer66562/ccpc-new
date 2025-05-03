@@ -18,6 +18,8 @@ class Registration extends Model
         'tel', 
         'email', 
         'account', 
-        'is_paid'
+        'is_paid', 
+        'year', 
+        'user_id'
     ];
 }
