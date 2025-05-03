@@ -11,7 +11,7 @@ class UpdatePeriodRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,8 @@ class UpdatePeriodRequest extends FormRequest
     {
         return [
             //
+            'starts_at' => ['required', 'date'], 
+            'ends_at' => ['required', 'date']
         ];
     }
 }

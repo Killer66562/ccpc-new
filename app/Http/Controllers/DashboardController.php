@@ -18,7 +18,9 @@ class DashboardController extends Controller
         //
         $user = $request->user();
         if (!$user) {
-            return redirect()->route('home');
+            return redirect()->route('home')->withErrors([
+                'message' => "You have no permission"
+            ]);
         }
 
         $current = Carbon::now(new DateTimeZone('+0800'));

@@ -31,3 +31,4 @@ require __DIR__.'/auth.php';
 require __DIR__.'/announcements.php';
 require __DIR__.'/registrations.php';
 require __DIR__.'/comments.php';
+require __DIR__.'/periods.php';

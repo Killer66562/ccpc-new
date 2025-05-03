@@ -9,4 +9,9 @@ class Period extends Model
 {
     /** @use HasFactory<\Database\Factories\PeriodFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'starts_at', 
+        'ends_at'
+    ];
 }

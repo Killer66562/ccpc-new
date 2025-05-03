@@ -48,7 +48,6 @@ class RegistrationController extends Controller
     {
         //
         $data = $request->validated();
-
         $year = Carbon::now(new DateTimeZone('+0800'))->year;
         $data = array_merge($data, ['year' => $year]);
 
@@ -78,8 +77,12 @@ class RegistrationController extends Controller
     public function update(UpdateRegistrationRequest $request, Registration $registration)
     {
         //
+        if (!request()->user()?->can('update', $registration)) {
+            return redirect()->route('home')->withErrors([
+                'message' => 'You have no permission'
+            ]);
+        }
         $data = $request->validated();
-
         $registration->update($data);
         return redirect()->back();
     }
@@ -90,6 +93,11 @@ class RegistrationController extends Controller
     public function destroy(Registration $registration)
     {
         //
+        if (!request()->user()?->can('delete', $registration)) {
+            return redirect()->route('home')->withErrors([
+                'message' => 'You have no permission'
+            ]);
+        }
         $registration->delete();
         return redirect()->back();
     }

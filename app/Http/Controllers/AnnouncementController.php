@@ -15,9 +15,6 @@ class AnnouncementController extends Controller
     public function index()
     {
         //
-        if (request()->user()?->can('create', Announcement::class)) {
-            return redirect()->route('home');
-        }
         $announcements = Announcement::all();
         $showForm = request()->user()?->hasRole('admin') ? true : false;
         return Inertia::render('Announcements', [
@@ -40,8 +37,11 @@ class AnnouncementController extends Controller
     public function store(StoreAnnouncementRequest $request)
     {
         //
-        if (!$request->user()?->can('create', Announcement::class)) {
-            return redirect()->route('home');
+        $valid = $request->user()?->can('create', Announcement::class) ? true : false;
+        if (!$valid) {
+            return redirect()->route('home')->withErrors([
+                'message' => "You have no permission"
+            ]);
         }
         $data = $request->validated();
         Announcement::create($data);
@@ -70,8 +70,11 @@ class AnnouncementController extends Controller
     public function update(UpdateAnnouncementRequest $request, Announcement $announcement)
     {
         //
-        if (!$request->user()?->can('create', Announcement::class)) {
-            return redirect()->route('home');
+        $valid = $request->user()?->can('update', $announcement) ? true : false;
+        if (!$valid) {
+            return redirect()->route('home')->withErrors([
+                'message' => "You have no permission"
+            ]);
         }
         $data = $request->validated();
         $announcement->update($data);
@@ -84,10 +87,12 @@ class AnnouncementController extends Controller
     public function destroy(Announcement $announcement)
     {
         //
-        if (!request()->user()?->can('create', Announcement::class)) {
-            return redirect()->route('home');
+        $valid = request()->user()?->can('delete', $announcement) ? true : false;
+        if (!$valid) {
+            return redirect()->route('home')->withErrors([
+                'message' => "You have no permission"
+            ]);
         }
-        $valid = request()->user()?->can('announcements.delete') ? true : false;
         $announcement->delete();
         return redirect()->back();
     }

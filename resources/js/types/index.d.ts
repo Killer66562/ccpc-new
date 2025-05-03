@@ -12,7 +12,8 @@ export interface User extends Base {
     name: string, 
     email: string, 
     avatar?: string, 
-    email_verified_at: string | null
+    email_verified_at: string | null, 
+    is_admin?: boolean
 }
 
 export interface Auth {
@@ -89,7 +90,8 @@ export interface CommentsPageProps extends SharedData {
 }
 
 export interface PeriodsPageProps extends SharedData {
-    periods: Period[]
+    periods: Period[], 
+    showForm?: boolean
 }
 
 export interface ResultsPageProps extends SharedData {

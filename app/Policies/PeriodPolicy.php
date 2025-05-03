@@ -13,7 +13,7 @@ class PeriodPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasRole('admin');
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class PeriodPolicy
      */
     public function view(User $user, Period $period): bool
     {
-        return $user->hasRole('admin');
+        return true;
     }
 
     /**

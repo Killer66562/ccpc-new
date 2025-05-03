@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePeriodRequest;
 use App\Http\Requests\UpdatePeriodRequest;
 use App\Models\Period;
+use Carbon\Carbon;
+use DateTimeZone;
+use Inertia\Inertia;
 
 class PeriodController extends Controller
 {
@@ -14,6 +17,12 @@ class PeriodController extends Controller
     public function index()
     {
         //
+        $periods = Period::all();
+        $showForm = request()->user()?->hasRole('admin') ? true : false;
+        return Inertia::render('Periods', [
+            'periods' => $periods, 
+            'showForm' => $showForm
+        ]);
     }
 
     /**
@@ -30,6 +39,23 @@ class PeriodController extends Controller
     public function store(StorePeriodRequest $request)
     {
         //
+        $valid = $request->user()?->can('create', Period::class) ? true : false;
+        if (!$valid) {
+            return redirect()->route('home')->withErrors([
+                'message' => "You have no permission"
+            ]);
+        }
+        $data = $request->validated();
+        /*
+        $starts_at = $data['starts_at'];
+        $ends_at = $data['ends_at'];
+        $data = [
+            'starts_at' => Carbon::make($starts_at, new DateTimeZone('+0800')), 
+            'ends_at' => Carbon::make($ends_at, new DateTimeZone('+0800'))
+        ];
+        */
+        Period::create($data);
+        return redirect()->back();
     }
 
     /**
@@ -54,6 +80,15 @@ class PeriodController extends Controller
     public function update(UpdatePeriodRequest $request, Period $period)
     {
         //
+        $valid = $request->user()?->can('update', $period) ? true : false;
+        if (!$valid) {
+            return redirect()->route('home')->withErrors([
+                'message' => "You have no permission"
+            ]);
+        }
+        $data = $request->validated();
+        $period->update($data);
+        return redirect()->back();
     }
 
     /**
@@ -62,5 +97,13 @@ class PeriodController extends Controller
     public function destroy(Period $period)
     {
         //
+        $valid = request()->user()?->can('delete', $period) ? true : false;
+        if (!$valid) {
+            return redirect()->route('home')->withErrors([
+                'message' => "You have no permission"
+            ]);
+        }
+        $period->delete();
+        return redirect()->back();
     }
 }

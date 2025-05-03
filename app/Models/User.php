@@ -65,4 +65,8 @@ class User extends Authenticatable
         $year = Carbon::now(new DateTimeZone('+0800'))->year;
         return $this->registrations()->where('year', '=', $year)->first();
     }
+
+    public function getIsAdminAttribute() {
+        return $this->hasRole('admin');
+    }
 }

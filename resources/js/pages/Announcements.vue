@@ -70,7 +70,7 @@ const submit = () => {
                 });
                 announcement.value = undefined;
                 f.reset();
-                alert("更新成功");
+                alert("新增成功");
             }, 
             onError: (errors) => {
                 toastErrors(errors);
@@ -90,7 +90,7 @@ const cancel = () => {
 const formatDate = (dateString: Date) => {
     const d = new Date(dateString);
     const year = d.getFullYear();
-    const month = d.getMonth();
+    const month = d.getMonth() + 1;
     const date = d.getDate();
     return `${year}/${month}/${date}`;
 }
@@ -114,9 +114,9 @@ const valid = computed(() => {
             <div class="btn-group">
                 <button type="submit" v-if="announcement" class="btn btn-success" :disabled="!valid">更新公告</button>
                 <button type="submit" v-else class="btn btn-success" :disabled="!valid">新增公告</button>
-                <button type="button" v-if="announcement" class="btn btn-secondary" @click="cancel">取消編輯</button>
-                <button type="reset" class="btn btn-warning">重新填寫</button>
-                <button type="button" class="btn btn-danger" @click="del" :disabled="f.processing">刪除公告</button>
+                <button type="reset" class="btn btn-secondary">重新填寫</button>
+                <button type="button" v-if="announcement" class="btn btn-warning" @click="cancel">取消編輯</button>
+                <button type="button" class="btn btn-danger" @click="del" :disabled="f.processing" v-if="announcement">刪除公告</button>
             </div>
         </form>
     </template>
@@ -132,7 +132,7 @@ const valid = computed(() => {
             </thead>
             <tbody>
                 <tr v-for="anno in page.props.announcements" :key="anno.id">
-                    <td>{{ formatDate(anno.created_at) }}</td>
+                    <td>{{ new Date(anno.created_at).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }) }}</td>
                     <td class="pre-line">{{ anno.content }}</td>
                     <td v-if="page.props.showForm">
                         <button type="button" class="btn btn-primary" @click="edit(anno)">編輯</button>
