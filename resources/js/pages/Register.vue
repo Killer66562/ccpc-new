@@ -11,7 +11,7 @@ const f = useForm({
 });
 
 const valid = computed(() => {
-    return f.name.length > 0 && f.email.length > 0 && f.password.length >= 8;
+    return f.name.length > 0 && f.email.length > 0 && f.password.length >= 8 && !f.processing;
 });
 
 const onSubmit = () => {
@@ -44,6 +44,7 @@ const onReset = () => {
         <div class="pb-3">
             <label class="form-label">Password</label>
             <input type="password" class="form-control" v-model="f.password">
+            <div :class="{ 'text-danger': f.password.length < 8 }">Length: {{ f.password.length }} (>= 8 required)</div>
         </div>
         <div class="pb-3">
             <label class="form-label">Password Confirmation</label>

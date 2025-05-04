@@ -92,6 +92,8 @@ const onDelete = (id: number) => {
     <p class="text-danger">請務必注意報名開放期間，逾時將無法報名。</p>
     <template v-if="page.props.showForm">
         <hr>
+        <h3 v-if="period">正在修改報名開放期間 #{{ period.id }}</h3>
+        <h3 v-else>新增報名開放期間</h3>
         <form @submit.prevent="onSubmit" @reset.prevent="onReset">
             <div class="row">
                 <div class="col-12 col-lg-6 pb-3">
@@ -104,7 +106,7 @@ const onDelete = (id: number) => {
                 </div>
             </div>
             <div class="btn-group pb-3">
-                <button type="submit" class="btn btn-success">提交</button>
+                <button type="submit" class="btn btn-success" :disabled="f.processing">提交</button>
                 <button type="reset" class="btn btn-secondary">重填</button>
                 <button type="button" class="btn btn-warning" @click="cancelEdit" v-if="period">取消修改</button>
             </div>
@@ -127,7 +129,7 @@ const onDelete = (id: number) => {
                     <td v-if="page.props.showForm">
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary" @click="onEdit(period)">修改</button>
-                            <button type="button" class="btn btn-danger" @click="onDelete(period.id)">刪除</button>
+                            <button type="button" class="btn btn-danger" @click="onDelete(period.id)" :disabled="f.processing">刪除</button>
                         </div>
                     </td>
                 </tr>

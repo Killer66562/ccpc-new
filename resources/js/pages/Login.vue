@@ -41,7 +41,7 @@ const onReset = () => {
         </div>
         <div class="pb-3">
             <div class="btn-group">
-                <button type="submit" class="btn btn-success">Login</button>
+                <button type="submit" class="btn btn-success" :disabled="f.processing">Login</button>
                 <button type="reset" class="btn btn-danger">Reset</button>
             </div>
             <div>

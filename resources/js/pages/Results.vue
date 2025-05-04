@@ -92,7 +92,7 @@ const changed = () => {
         </form>
     </template>
     <hr>
-    <form>
+    <form class="pb-3">
         <div class="row">
             <div class="col-12 col-lg-4">
                 <label class="form-label">選擇年份</label>
@@ -104,10 +104,11 @@ const changed = () => {
     </form>
     <div class="table-responsive">
         <table class="table">
-            <thead>
+            <thead class="table-success">
                 <tr>
                     <th>名次</th>
                     <th>學校</th>
+                    <th>系所</th>
                     <th>姓名</th>
                     <th v-if="page.props.showForm">操作</th>
                 </tr>
@@ -115,6 +116,7 @@ const changed = () => {
             <tbody>
                 <tr v-for="result in page.props.results" :key="result.id">
                     <td>{{ getRankStr(result.rank) }}</td>
+                    <td>{{ result.person.university }}</td>
                     <td>{{ result.person.department }}</td>
                     <td>{{ result.person.name }}</td>
                     <td v-if="page.props.showForm">

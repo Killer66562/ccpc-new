@@ -7,7 +7,7 @@ import { toNamedRoute } from '../lib/utils';
     <BaseLayout>
         <div class="row pt-4 pb-4">
             <div class="col-12 col-lg-8 pb-2">
-                <h1 class="text-center fw-bold d-flex align-items-center h-100">2025中區大專院校程式設計競賽</h1>
+                <h1 class="text-center fw-bold d-flex align-items-center h-100">{{ new Date().getFullYear() }}中區大專院校程式設計競賽</h1>
             </div>
             <div class="col-12 col-lg-4 pt-2">
                 <div class="row">

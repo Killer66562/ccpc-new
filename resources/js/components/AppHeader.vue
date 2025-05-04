@@ -55,7 +55,7 @@ const onLogout = () => {
                             <a class="nav-link" aria-current="page" href="javascript:void(0)" @click="toNamedRoute('dashboard')">Hello, {{ page.props.auth.user.name }}</a>
                         </li>
                         <li class="nav-item">
-                            <button type="button" class="btn btn-sm btn-danger" @click="onLogout">Logout</button>
+                            <button type="button" class="btn btn-sm btn-danger" @click="onLogout" :disabled="f.processing">Logout</button>
                         </li>
                     </template>
                 </ul>

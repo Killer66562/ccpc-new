@@ -51,7 +51,7 @@ const del = () => {
     <p class="pre-line">{{ comment.reply?.trim() }}</p>
     <div class="btn-group pb-3" v-if="showButton">
         <button type="button" class="btn btn-primary btn-sm" @click="show = !show">回覆這個留言</button>
-        <button type="button" class="btn btn-danger btn-sm" @click="del">刪除這個留言</button>
+        <button type="button" class="btn btn-danger btn-sm" @click="del" :disabled="f.processing">刪除這個留言</button>
     </div>
     <form @submit.prevent="reply" v-show="show">
         <div class="pb-3">
@@ -59,7 +59,7 @@ const del = () => {
             <textarea class="form-control" rows="5" v-model="f.reply"></textarea>
         </div>
         <div class="btn-group pb-3">
-            <button type="submit" class="btn btn-primary btn-sm">回覆</button>
+            <button type="submit" class="btn btn-primary btn-sm" :disabled="f.processing">回覆</button>
         </div>
     </form>
 </template>

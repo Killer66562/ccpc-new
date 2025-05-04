@@ -41,7 +41,7 @@ const onBtnClicked = () => {
         <td>{{ registration.university }}</td>
         <td>{{ registration.name }}</td>
         <td v-if="editable">
-            <button type="button" class="btn" :class="{ 'btn-success': registration.is_paid, 'btn-danger': !registration.is_paid }" @click="onBtnClicked">{{ registration.is_paid ? "已繳費" : "未繳費" }}</button>
+            <button type="button" class="btn" :class="{ 'btn-success': registration.is_paid, 'btn-danger': !registration.is_paid }" @click="onBtnClicked" :disabled="f.processing">{{ registration.is_paid ? "已繳費" : "未繳費" }}</button>
         </td>
         <td class="fw-bold" :class="{ 'text-success': registration.is_paid, 'text-danger': !registration.is_paid }" v-else>{{ registration.is_paid ? "已繳費" : "未繳費" }}</td>
     </tr>

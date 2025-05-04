@@ -16,7 +16,8 @@ const f = useForm({
 const valid = computed(() => {
     return f.title.length > 0 &&
     f.content.length > 0 && 
-    f.user_id !== undefined
+    f.user_id !== undefined && 
+    !f.processing
 });
 
 const submit = () => {

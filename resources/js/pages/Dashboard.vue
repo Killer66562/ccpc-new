@@ -26,7 +26,8 @@ const valid = computed(() => {
     f.tel.length > 0 && 
     f.email.length > 0 && 
     f.account.length > 0 && 
-    f.user_id !== undefined
+    f.user_id !== undefined && 
+    !f.processing
 });
 
 const submit = () => {
@@ -109,7 +110,7 @@ const cancel = () => {
                 <button type="submit" class="btn btn-success" v-if="!page.props.registration" :disabled="!valid">提交報名資料</button>
                 <template v-else>
                     <button type="submit" class="btn btn-success" :disabled="!valid">修改報名資料</button>
-                    <button type="button" class="btn btn-danger" @click="cancel">取消報名</button>
+                    <button type="button" class="btn btn-danger" @click="cancel" :disabled="f.processing">取消報名</button>
                 </template>
                 <button type="reset" class="btn btn-secondary">重新填寫</button>
             </div>
