@@ -17,7 +17,12 @@ const f = useForm({
 
 const onSubmit = () => {
     if (period.value) {
-        f.put(route('periods.update', { period: period.value.id }), {
+        f.transform(() => {
+            return {
+                starts_at: f.starts_at.toUTCString(), 
+                ends_at: f.ends_at.toUTCString()
+            }
+        }).put(route('periods.update', { period: period.value.id }), {
             onSuccess: () => {
                 f.defaults({
                     starts_at: new Date(), 
@@ -33,7 +38,12 @@ const onSubmit = () => {
         });
     }
     else {
-        f.post(route('periods.store'), {
+        f.transform(() => {
+            return {
+                starts_at: f.starts_at.toUTCString(), 
+                ends_at: f.ends_at.toUTCString()
+            }
+        }).post(route('periods.store'), {
             onSuccess: () => {
                 f.defaults({
                     starts_at: new Date(), 
