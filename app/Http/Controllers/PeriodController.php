@@ -46,14 +46,12 @@ class PeriodController extends Controller
             ]);
         }
         $data = $request->validated();
-        /*
         $starts_at = $data['starts_at'];
         $ends_at = $data['ends_at'];
         $data = [
-            'starts_at' => Carbon::make($starts_at, new DateTimeZone('+0800')), 
-            'ends_at' => Carbon::make($ends_at, new DateTimeZone('+0800'))
+            'starts_at' => Carbon::parse($starts_at), 
+            'ends_at' => Carbon::parse($ends_at)
         ];
-        */
         Period::create($data);
         return redirect()->back();
     }
@@ -87,6 +85,12 @@ class PeriodController extends Controller
             ]);
         }
         $data = $request->validated();
+        $starts_at = $data['starts_at'];
+        $ends_at = $data['ends_at'];
+        $data = [
+            'starts_at' => Carbon::parse($starts_at), 
+            'ends_at' => Carbon::parse($ends_at)
+        ];
         $period->update($data);
         return redirect()->back();
     }

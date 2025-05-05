@@ -17,12 +17,7 @@ const f = useForm({
 
 const onSubmit = () => {
     if (period.value) {
-        f.transform(() => {
-            return {
-                starts_at: f.starts_at.toUTCString(), 
-                ends_at: f.ends_at.toUTCString()
-            }
-        }).put(route('periods.update', { period: period.value.id }), {
+        f.put(route('periods.update', { period: period.value.id }), {
             onSuccess: () => {
                 f.defaults({
                     starts_at: new Date(), 
@@ -38,12 +33,7 @@ const onSubmit = () => {
         });
     }
     else {
-        f.transform(() => {
-            return {
-                starts_at: f.starts_at.toUTCString(), 
-                ends_at: f.ends_at.toUTCString()
-            }
-        }).post(route('periods.store'), {
+        f.post(route('periods.store'), {
             onSuccess: () => {
                 f.defaults({
                     starts_at: new Date(), 
@@ -95,6 +85,8 @@ const onDelete = (id: number) => {
         });
     }
 }
+
+console.log(page.props.periods)
 </script>
 
 <template>
@@ -134,8 +126,8 @@ const onDelete = (id: number) => {
             </thead>
             <tbody>
                 <tr v-for="period in page.props.periods" :key="period.id">
-                    <td>{{ new Date(period.starts_at).toLocaleString('zh-tw', { timeZone: 'Asia/Taipei' }) }}</td>
-                    <td>{{ new Date(period.ends_at).toLocaleString('zh-tw', { timeZone: 'Asia/Taipei' }) }}</td>
+                    <td>{{ new Date(period.starts_at).toLocaleString() }}</td>
+                    <td>{{ new Date(period.ends_at).toLocaleString() }}</td>
                     <td v-if="page.props.showForm">
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary" @click="onEdit(period)">修改</button>
