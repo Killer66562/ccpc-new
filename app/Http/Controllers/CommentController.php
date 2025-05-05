@@ -78,7 +78,7 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         //
-        if (request()->user()?->can('delete', $comment)) {
+        if (!request()->user()?->can('delete', $comment)) {
             return redirect()->route('home');
         }
         $comment->delete();
