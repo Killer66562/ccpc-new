@@ -2,6 +2,7 @@
     <h2 class="fw-bold">交通資訊</h2>
     <label class="bg-info w-100 text-dark fw-bold">鐵公路：</label>
     <p>從彰化火車站搭乘彰化客運往「保四」方向公車，於彰化師大寶山校區下車(車次約一小時一 班)。 </p>
+    <img class="img-fluid" src="https://www.changhuabus.com.tw/upload/product/images/202409241427171.PNG" style="min-width: 100%;">
     <label class="bg-info w-100 text-dark fw-bold" >中山高速公路：</label>
     <p>高速公路下彰化交流道，沿中華西路、中央路、中山路、中興路，經縣立體育場、師大路，即可抵達。</p>
     <label class="bg-info w-100 text-dark fw-bold" >國道三號高速公路：</label>
