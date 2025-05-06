@@ -34,7 +34,7 @@
                 <li> 2.匯款/轉帳時請務必備註：<span style="color:red">繳款人姓名、聯絡電話、以及『參加中程盃比賽用』</span></li>
                 <li> ※報名費用為：<span style="color:red;"> 新台幣 100 元 </span></li>
                 <br>
-                <li style="color:red;font-size:10px"> 註：有特殊情況者，得經通知後於現場繳費</li>
+                <li style="color:red"> 註：有特殊情況者，得經通知後於現場繳費</li>
             </ul> 
         <li>參賽獎項
         <ul class="unstyled">

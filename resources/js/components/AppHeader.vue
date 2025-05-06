@@ -41,13 +41,13 @@ console.log(page.props.auth.user)
                         <a class="nav-link" aria-current="page" href="javascript:void(0)" @click="toNamedRoute('transportationInfo')">交通資訊</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="https://www.google.com.tw/maps/place/國立彰化師範大學寶山校區/@24.065726,120.5570761,18z/data=!3m1!5s0x346938f6c4fb4003:0x6a63c81bc46c46c7!4m6!3m5!1s0x346938f433a801cd:0x9210ba63eab99f6f!8m2!3d24.0654!4d120.5576389!16s%2Fg%2F1v_n9877?hl=zh-TW&entry=ttu&g_ep=EgoyMDI1MDQzMC4xIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D">看地圖</a>
+                        <a class="nav-link" aria-current="page" href="https://www.google.com.tw/maps/place/國立彰化師範大學寶山校區/@24.065726,120.5570761,18z/data=!3m1!5s0x346938f6c4fb4003:0x6a63c81bc46c46c7!4m6!3m5!1s0x346938f433a801cd:0x9210ba63eab99f6f!8m2!3d24.0654!4d120.5576389!16s%2Fg%2F1v_n9877?hl=zh-TW&entry=ttu&g_ep=EgoyMDI1MDQzMC4xIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" target="_blank" rel="noopener">看地圖</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="https://www.csie.ncue.edu.tw/csie/">彰師資工</a>
+                        <a class="nav-link" aria-current="page" href="https://www.csie.ncue.edu.tw/csie/" target="_blank" rel="noopener">彰師資工</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="https://www.ncue.edu.tw/">彰師大</a>
+                        <a class="nav-link" aria-current="page" href="https://www.ncue.edu.tw/" target="_blank" rel="noopener">彰師大</a>
                     </li>
                     <li class="nav-item" v-if="!page.props.auth.user">
                         <a class="nav-link" aria-current="page" href="javascript:void(0)" @click="toNamedRoute('login')">Login</a>
