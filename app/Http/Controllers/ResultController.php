@@ -95,5 +95,13 @@ class ResultController extends Controller
     public function destroy(Result $result)
     {
         //
+        $valid = request()->user()?->can('delete', $result);
+        if (!$valid) {
+            return redirect()->route('home')->withErrors([
+                'message' => 'You have no permission'
+            ]);
+        }
+        $result->delete();
+        return redirect()->back();
     }
 }

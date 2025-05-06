@@ -10,7 +10,7 @@ import { toNamedRoute } from '../lib/utils';
                 <h1 class="text-center fw-bold d-flex align-items-center h-100">{{ new Date().getFullYear() }}中區大專院校程式設計競賽</h1>
             </div>
             <div class="col-12 col-lg-4 pt-2">
-                <div class="row">
+                <div class="row text-center">
                     <div class="col-3 p-2">
                         <div class="d-grid">
                             <a href="javascript:void(0)" @click="toNamedRoute('announcements.index')">競賽公告</a>

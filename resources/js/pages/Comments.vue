@@ -40,6 +40,7 @@ const reset = () => {
 <template>
     <h2 class="fw-bold">問題留言</h2>
     <template v-if="page.props.auth.user">
+        <hr>
         <form @submit.prevent="submit" @reset.prevent="reset">
             <div class="pb-3">
                 <label class="form-label">標題</label>

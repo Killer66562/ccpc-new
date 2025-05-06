@@ -62,6 +62,17 @@ const cancel = () => {
     if (page.props.registration) {
         f.delete(route('registrations.destroy', { registration: page.props.registration.id }), {
             onSuccess: () => {
+                f.defaults({
+                    name: "", 
+                    sid: "", 
+                    university: "", 
+                    department: "", 
+                    tel: "", 
+                    email: "", 
+                    account: "", 
+                    user_id: page.props.auth.user?.id
+                });
+                f.reset();
                 alert("取消報名成功");
             }, 
             onError: () => {
