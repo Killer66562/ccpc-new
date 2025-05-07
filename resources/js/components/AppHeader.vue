@@ -18,8 +18,6 @@ const onLogout = () => {
         }
     });
 }
-
-console.log(page.props.auth.user)
 </script>
 
 <template>

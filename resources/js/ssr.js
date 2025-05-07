@@ -1,24 +1,29 @@
-import { createSSRApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
+import createServer from '@inertiajs/vue3/server'
+import { renderToString } from '@vue/server-renderer'
+import { createSSRApp, h } from 'vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.js'
 import AppLayout from './layouts/AppLayout.vue'
 import Vue3Toastify from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
-createInertiaApp({
+createServer(page =>
+  createInertiaApp({
+    page,
+    render: renderToString,
     resolve: name => {
         const pages = import.meta.glob('./pages/**/*.vue', { eager: true });
         let page = pages[`./pages/${name}.vue`];
         page.default.layout = AppLayout;
         return page;
     },
-    setup({ el, App, props, plugin }) {
-        createSSRApp({ render: () => h(App, props) })
+    setup({ App, props, plugin }) {
+      return createSSRApp({ render: () => h(App, props) })
         .use(plugin)
         .use(Vue3Toastify, {
-            autoClose: 3000,
+          autoClose: 3000,
         })
-        .mount(el)
     },
-})
+  }),
+  { cluster: true }
+)
