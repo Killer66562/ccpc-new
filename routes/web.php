@@ -37,3 +37,4 @@ require __DIR__.'/registrations.php';
 require __DIR__.'/comments.php';
 require __DIR__.'/periods.php';
 require __DIR__.'/results.php';
+require __DIR__.'/users.php';

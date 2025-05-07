@@ -3,7 +3,6 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Carbon\Carbon;
 use DateTimeZone;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -69,14 +68,5 @@ class User extends Authenticatable
 
     public function getIsAdminAttribute() {
         return $this->hasRole('admin');
-    }
-
-    protected function isAdmin(): Attribute
-
-    {
-
-        return new Attribute(
-            get: fn() => $this->hasRole('admin')
-        );
     }
 }

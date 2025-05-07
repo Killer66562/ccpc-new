@@ -11,7 +11,7 @@ const f = useForm({
 });
 
 const valid = computed(() => {
-    return f.name.length > 0 && f.email.length > 0 && f.password.length >= 8 && !f.processing;
+    return f.name.length > 0 && f.email.length > 0 && f.password.length >= 8 && f.password === f.password_confirmation && !f.processing;
 });
 
 const onSubmit = () => {

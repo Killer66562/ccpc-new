@@ -18,6 +18,8 @@ const onLogout = () => {
         }
     });
 }
+
+console.log(page.props.auth.user)
 </script>
 
 <template>
@@ -53,6 +55,9 @@ const onLogout = () => {
                     <template v-else>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="javascript:void(0)" @click="toNamedRoute('dashboard')">Hello, {{ page.props.auth.user.name }}</a>
+                        </li>
+                        <li class="nav-item" v-if="page.props.auth.user.is_admin">
+                            <a class="nav-link" aria-current="page" href="javascript:void(0)" @click="toNamedRoute('users.index')">使用者管理</a>
                         </li>
                         <li class="nav-item">
                             <button type="button" class="btn btn-sm btn-danger" @click="onLogout" :disabled="f.processing">Logout</button>

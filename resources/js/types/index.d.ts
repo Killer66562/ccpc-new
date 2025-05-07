@@ -100,3 +100,15 @@ export interface ResultsPageProps extends SharedData {
     showForm?: boolean, 
     people: Registration[]
 }
+
+export interface Paginated<T> {
+    data: T[], 
+    total: number, 
+    per_page: number, 
+    current_page: number, 
+    last_page: number
+}
+
+export interface UsersPageProps extends SharedData {
+    data: Paginated<User>
+}
