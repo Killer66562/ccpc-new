@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { useForm } from '@inertiajs/vue3';
-import { Registration } from '../types';
+import { useForm, usePage } from '@inertiajs/vue3';
+import { Registration, SharedData } from '../types';
 import { route } from 'ziggy-js';
+
+const page = usePage<SharedData>();
 
 const props = defineProps<{
     registration: Registration, 
@@ -35,6 +37,7 @@ const onBtnClicked = () => {
 }
 
 function maskName(name: string): string {
+    if (page.props.auth.user?.is_admin) return name;
     if (name.length <= 1) return name;
     if (name.length === 2) return name[0] + '*';
     return name[0] + '*' + name[name.length - 1];
