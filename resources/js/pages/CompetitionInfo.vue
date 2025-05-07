@@ -18,7 +18,7 @@
             <ul class="unstyled" style="color:red;padding-left:20px;">
                 <li>比賽使用語言：C/C++、JAVA、Python</li>
                 <li>編譯器版本：GCC4.6.1、JDK1.6以上、Python 3.6以上</li>
-                <!-- <li>比賽提供IDE：Dev C++ 5.1、NetBean 6.9以上、JCreator LE</li> -->
+                <li>比賽提供IDE：VS Code、Code::Blocks</li>
             </ul>若使用其他IDE軟體，請各選手自備安裝檔，比賽當天可在開放測試時間入場進行環境建置，惟各隊須自行承擔使用任何IDE造成之問題。
         </li>
         <li>比賽時間為<span style="color:red;"> 5 小時 ( 12:00~17:00 ) </span>，題目約6~8題不等，以中/英文出題。參賽者可攜帶最多20張A4大小雙面印刷之參考資料及紙本字典在競賽時參考。但<span style="color:red;">不可攜帶機器可讀寫的任何軟體或資料，亦不可攜帶自己的電腦、終端機、手機、電子辭典或隨身碟，並嚴禁使用行動電話及呼叫器</span>，以免干擾其他參賽者作答，現場不提供網路連線，亦不得用任何方法上網查詢資料，違者將取消參賽資格。</li>
@@ -29,11 +29,13 @@
             <ul class="unstyled" style="color:blue;padding-left:20px;">
                 <li>繳費流程</li>
                 <li> 1.將報名費匯款/轉帳至本帳戶：</li>
+                <li>&nbsp;&nbsp;&nbsp;<span style="color:red">郵局代號：700</span></li>
+                <li>&nbsp;&nbsp;&nbsp;<span style="color:red">帳號：0081146 0128771</span></li>
                 <li>&nbsp;&nbsp;&nbsp;<span style="color:red">戶名：彰師資訊工程系學會林睿宏</span></li>
-                <li>&nbsp;&nbsp;&nbsp;<span style="color:red">帳號：700 0081146 0128771</span></li>
-                <li> 2.匯款/轉帳時請務必備註：<span style="color:red">繳款人姓名、聯絡電話、以及『參加中程盃比賽用』</span></li>
+                <li>&nbsp;&nbsp;&nbsp;<span style="color:red">郵局：彰化師大郵局</span></li>
+                <li> 2.匯款/轉帳時請務必備註：<span style="color:red">繳款人姓名以及『參加中程盃比賽用』</span></li>
                 <li> ※報名費用為：<span style="color:red;"> 新台幣 100 元 </span></li>
-                <br>
+                <br> 
                 <li style="color:red"> 註：有特殊情況者，得經通知後於現場繳費</li>
             </ul> 
         <li>參賽獎項
@@ -45,5 +47,11 @@
         </ul>
         </li>
         <li>主辦單位保留一切權利。</li>
+    </ol>
+    <hr>
+    <h3 class="info-head">聯絡資訊</h3>
+    <ol>
+        <a href="mailto:ncuecsie.sa115@gmail.com">聯絡信箱: ncuecsie.sa115@gmail.com</a><br>
+        <a href="https://www.facebook.com/ncuecsieccpc" target="_blank" rel="noopener">Facebook 粉絲專頁</a>
     </ol>
 </template>

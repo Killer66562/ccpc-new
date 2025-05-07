@@ -33,13 +33,19 @@ const onBtnClicked = () => {
         }
     });
 }
+
+function maskName(name: string): string {
+    if (name.length <= 1) return name;
+    if (name.length === 2) return name[0] + '*';
+    return name[0] + '*' + name[name.length - 1];
+}
 </script>
 
 <template>
     <tr>
         <td>{{ registration.id }}</td>
         <td>{{ registration.university }}</td>
-        <td>{{ registration.name }}</td>
+        <td>{{ maskName(registration.name) }}</td>
         <td v-if="editable">
             <button type="button" class="btn" :class="{ 'btn-success': registration.is_paid, 'btn-danger': !registration.is_paid }" @click="onBtnClicked" :disabled="f.processing">{{ registration.is_paid ? "已繳費" : "未繳費" }}</button>
         </td>
