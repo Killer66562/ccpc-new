@@ -5,10 +5,10 @@
     <p>透過比賽提升大學生之程式設計能力，熟悉ACM、ICPC等國際級程式設計競賽相關規則，增加程式設計實務經驗。同時亦可藉此活動增加大學生程式交流之機會，提昇彼此的程式能力。</p>
     <hr>
     <h3>參加對象</h3>
-    <p>全國各大專院校大學部學生。</p>
+    <p>全國各大專院校大學部及碩士學生。</p>
     <hr>
     <h3>活動地點</h3>
-    <p>國立彰化師範大學 寶山校區 工學院B2 EB211電腦教室</p>
+    <p>國立彰化師範大學 寶山校區 經世館 32101 電腦教室</p>
     <hr>
     <h3 class="info-head">競賽規則</h3>
     <ol class="rule-list">
@@ -18,7 +18,7 @@
             <ul class="unstyled" style="color:red;padding-left:20px;">
                 <li>比賽使用語言：C/C++、JAVA、Python</li>
                 <li>編譯器版本：GCC4.6.1、JDK1.6以上、Python 3.6以上</li>
-                <li>比賽提供IDE：VS Code、Code::Blocks</li>
+                <li>比賽提供IDE：Dev C++, Code::Blocks、Eclipse、VS Code</li>
             </ul>若使用其他IDE軟體，請各選手自備安裝檔，比賽當天可在開放測試時間入場進行環境建置，惟各隊須自行承擔使用任何IDE造成之問題。
         </li>
         <li>比賽時間為<span style="color:red;"> 5 小時 ( 12:00~17:00 ) </span>，題目約6~8題不等，以中/英文出題。參賽者可攜帶最多20張A4大小雙面印刷之參考資料及紙本字典在競賽時參考。但<span style="color:red;">不可攜帶機器可讀寫的任何軟體或資料，亦不可攜帶自己的電腦、終端機、手機、電子辭典或隨身碟，並嚴禁使用行動電話及呼叫器</span>，以免干擾其他參賽者作答，現場不提供網路連線，亦不得用任何方法上網查詢資料，違者將取消參賽資格。</li>
@@ -40,10 +40,10 @@
             </ul> 
         <li>參賽獎項
         <ul class="unstyled">
-        <li>第一名：禮卷六千元及獎狀乙紙。</li>
-            <li>第二名：禮卷四千元及獎狀乙紙。</li>
-            <li>第三名：禮卷三千元及獎狀乙紙。</li>
-            <li>佳作三名：禮卷一千元及獎狀乙紙。</li>
+        <li>第一名：全家禮卷六千元及獎狀乙紙。</li>
+            <li>第二名：全家禮卷四千元及獎狀乙紙。</li>
+            <li>第三名：全家禮卷三千元及獎狀乙紙。</li>
+            <li>佳作三名：全家禮卷一千元及獎狀乙紙。</li>
         </ul>
         </li>
         <li>主辦單位保留一切權利。</li>
@@ -52,6 +52,7 @@
     <h3 class="info-head">聯絡資訊</h3>
     <ol>
         <a href="mailto:ncuecsie.sa115@gmail.com">聯絡信箱: ncuecsie.sa115@gmail.com</a><br>
-        <a href="https://www.facebook.com/ncuecsieccpc" target="_blank" rel="noopener">Facebook 粉絲專頁</a>
+        <a href="https://www.facebook.com/ncuecsieccpc" target="_blank" rel="noopener">Facebook 粉絲專頁</a><br>
+        <a href="https://www.instagram.com/ncuecsie/" target="_blank" rel="noopener">系學會 Instagram</a>
     </ol>
 </template>

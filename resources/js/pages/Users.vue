@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { useForm, usePage } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
-import { User, UsersPageProps } from '../types';
+import { Registration, User, UsersPageProps } from '../types';
 import Paginator from '../components/Paginator.vue';
 import { route } from 'ziggy-js';
 import { toast } from 'vue3-toastify';
 import { toastErrors } from '../lib/utils';
+import RegistrationModal from '../components/RegistrationModal.vue';
+import ModalOpenButton from '../components/ModalOpenButton.vue';
 
 const page = usePage<UsersPageProps>();
 
 const user = ref<User>();
+const registration = ref<Registration>();
 
 const qf = useForm({
     page: 1
@@ -133,9 +136,14 @@ const valid = computed(() => {
     f.password === f.password_confirmation &&
     !f.processing
 });
+
+const onShow = (regis?: Registration) => {
+    registration.value = regis;
+}
 </script>
 
 <template>
+    <RegistrationModal id="registration" :registration="registration" />
     <h2 class="fw-bold">使用者一覽</h2>
     <hr>
     <h3 v-if="user">正在修改使用者 #{{ user.id }}</h3>
@@ -190,7 +198,10 @@ const valid = computed(() => {
                     <td>{{ u.email }}</td>
                     <td>{{ u.is_admin }}</td>
                     <td>
-                        <button type="button" class="btn btn-primary" @click="edit(u)">修改</button>
+                        <div class="btn-group">
+                            <ModalOpenButton id="registration" class="btn btn-success" @click="onShow(u.registration)">顯示報名資訊</ModalOpenButton>
+                            <button type="button" class="btn btn-primary" @click="edit(u)">修改</button>
+                        </div>
                     </td>
                 </tr>
             </tbody>

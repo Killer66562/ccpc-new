@@ -22,6 +22,7 @@ class UserController extends Controller
         $data = User::query()->paginate(page: $page);
         foreach ($data->items() as $user) {
             $user->append('is_admin');
+            $user->append('registration');
         }
         return Inertia::render('Users', ['data' => $data]);
     }

@@ -14,6 +14,7 @@ export interface User extends Base {
     avatar?: string, 
     email_verified_at: string | null, 
     is_admin?: boolean
+    registration?: Registration
 }
 
 export interface Auth {
