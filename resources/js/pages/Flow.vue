@@ -1,7 +1,7 @@
 <template>
     <h2 class="fw-bold">活動日期</h2>
     <hr>
-        <p>報名日期：即日起至 2025 年 5 月 18 日（日）</p>
+        <p>報名日期：即日起至 2025 年 5 月 21 日（三）</p>
         <p style="color:red">活動日期：2025 年 5 月 24 日（六）</p>
     <h2 class="fw-bold">活動流程</h2>
     <hr>
