@@ -23,14 +23,14 @@ class UpdateRegistrationRequest extends FormRequest
     {
         return [
             //
-            'name' => ['required'], 
-            'sid' => ['required'], 
-            'university' => ['required'], 
-            'department' => ['required'], 
-            'email' => ['required', 'email'], 
-            'tel' => ['required'], 
+            'name' => [], 
+            'sid' => [], 
+            'university' => [], 
+            'department' => [], 
+            'email' => ['email'], 
+            'tel' => [], 
             'is_paid' => ['boolean'], 
-            'account' => ['required'], 
+            'account' => [], 
             'user_id' => ['exists:users,id']
         ];
     }

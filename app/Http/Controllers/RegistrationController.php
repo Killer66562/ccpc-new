@@ -20,7 +20,9 @@ class RegistrationController extends Controller
         //
         try {
             $year = Carbon::now(new DateTimeZone('+0800'))->year;
-            $registrations = Registration::query()->where('year', '=', $year)->get();
+            $registrations = Registration::query()->where('year', '=', $year)->select([
+                'id', 'university', 'department', 'name', 'is_paid'
+            ])->get();
         }
         catch (Exception $exception) {
             $registrations = [];

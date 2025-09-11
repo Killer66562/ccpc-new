@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useForm, usePage } from '@inertiajs/vue3';
-import { Registration, SharedData } from '../types';
+import { PartialRegistration, SharedData } from '../types';
 import { route } from 'ziggy-js';
 
 const page = usePage<SharedData>();
 
 const props = defineProps<{
-    registration: Registration, 
+    registration: PartialRegistration, 
     editable?: boolean
 }>();
 
@@ -15,16 +15,17 @@ const f = useForm({
     sid: props.registration.sid, 
     university: props.registration.university, 
     department: props.registration.department, 
-    tel: props.registration.tel, 
-    email: props.registration.email, 
-    account: props.registration.account, 
-    user_id: props.registration.user_id, 
-    is_paid: props.registration.is_paid
+    is_paid: props.registration.is_paid ? true : false
 });
 
 const onBtnClicked = () => {
     f.transform((data) => {
-        data.is_paid = !props.registration.is_paid;
+        if (props.registration.is_paid === undefined) {
+            data.is_paid = true;
+        }
+        else {
+            data.is_paid = !props.registration.is_paid
+        }
         return data;
     }).put(route('registrations.update', { registration: props.registration.id }), {
         onSuccess: () => {

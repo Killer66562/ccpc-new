@@ -19,24 +19,24 @@ class ResultController extends Controller
     public function index()
     {
         //
-        $query = Result::query()->with('person');
+        $query = Result::query()->with('person:id,name,university,department');
 
         $year = request()->query('year', null);
         if ($year !== null) {
             $year = (string)$year;
-            $query = $query->whereHas('person', function ($builder) use ($year) {
-                $builder->where('year', '=', $year);
+             $query = $query->whereHas('person', function ($builder) use ($year) {
+                return $builder->where('year', '=', $year);
             });
         }
         else {
             $year = (string)Carbon::now(new DateTimeZone('+0800'))->year;
             $query = $query->whereHas('person', function ($builder) use ($year) {
-                $builder->where('year', '=', $year);
+                return $builder->where('year', '=', $year);
             });
         }
         
         $results = $query->orderBy('rank')->get();
-        $people = Registration::query()->where('year', '=', $year)->get();
+        $people = Registration::query()->where('year', '=', $year)->select(['id', 'name', 'university', 'department'])->get();
         $showForm = request()->user()?->hasRole('admin') ? true : false;
         return Inertia::render('Results', [
             'results' => $results, 

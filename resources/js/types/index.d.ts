@@ -46,6 +46,14 @@ export interface Registration extends Base {
     user_id: number
 }
 
+export interface PartialRegistration extends Base {
+    name: string, 
+    sid: string, 
+    university: string, 
+    department: string, 
+    is_paid?: boolean
+}
+
 export interface CompetitionResult extends Base {
     rank: string, 
     person: Registration
@@ -66,7 +74,7 @@ export interface Period extends Base {
 export interface Result extends Base {
     rank: number, 
     registration_id: number, 
-    person: Registration
+    person: PartialRegistration
 }
 
 export interface AnnouncementsPageProps extends SharedData {
@@ -75,7 +83,7 @@ export interface AnnouncementsPageProps extends SharedData {
 }
 
 export interface RegistrationsPageProps extends SharedData {
-    registrations: Registration[], 
+    registrations: PartialRegistration[], 
     showForm?: boolean
 }
 
@@ -99,7 +107,7 @@ export interface ResultsPageProps extends SharedData {
     results: Result[], 
     year?: string, 
     showForm?: boolean, 
-    people: Registration[]
+    people: PartialRegistration[]
 }
 
 export interface Paginated<T> {
