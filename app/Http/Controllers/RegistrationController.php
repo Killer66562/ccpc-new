@@ -23,6 +23,25 @@ class RegistrationController extends Controller
             $registrations = Registration::query()->where('year', '=', $year)->select([
                 'id', 'university', 'department', 'name', 'is_paid'
             ])->get();
+
+            // 將 name 做遮蔽處理
+            $registrations->transform(function ($item) {
+                $name = $item->name;
+                $length = mb_strlen($name, 'UTF-8');
+
+                if ($length <= 1) {
+                    $masked = $name; // 單字就不處理
+                } elseif ($length == 2) {
+                    $masked = mb_substr($name, 0, 1, 'UTF-8') . '*';
+                } else {
+                    $masked = mb_substr($name, 0, 1, 'UTF-8')
+                            . str_repeat('*', $length - 2)
+                            . mb_substr($name, -1, 1, 'UTF-8');
+                }
+
+                $item->name = $masked;
+                return $item;
+            });
         }
         catch (Exception $exception) {
             $registrations = [];
